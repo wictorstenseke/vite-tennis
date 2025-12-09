@@ -40,8 +40,8 @@ describe('LoginDrawer', () => {
 
     await user.click(screen.getByRole('button', { name: /logga in/i }))
 
-    // Drawer should show the welcome title
-    expect(screen.getByText(/välkommen/i)).toBeInTheDocument()
+    // Drawer should show the login title (drawer header)
+    expect(screen.getByRole('heading', { name: /logga in/i })).toBeInTheDocument()
   })
 
   it('should display LoginForm inside drawer', async () => {
@@ -62,7 +62,7 @@ describe('LoginDrawer', () => {
     await user.click(screen.getByRole('button', { name: /logga in/i }))
 
     // The drawer content should have responsive classes
-    const drawerContent = screen.getByText(/välkommen/i).closest('[role="dialog"]')
+    const drawerContent = screen.getByRole('heading', { name: /logga in/i }).closest('[role="dialog"]')
     expect(drawerContent?.className).toContain('max-w-full')
     expect(drawerContent?.className).toContain('md:max-w-md')
   })
@@ -75,7 +75,7 @@ describe('LoginDrawer', () => {
 
     await user.click(screen.getByRole('button', { name: /logga in/i }))
 
-    expect(screen.getByText(/välkommen/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /logga in/i })).toBeInTheDocument()
 
     // The drawer closing behavior is handled by the internal state
     // We can verify the component structure is correct

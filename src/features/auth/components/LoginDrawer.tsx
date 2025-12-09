@@ -17,7 +17,7 @@ export function LoginDrawer({ children }: LoginDrawerProps) {
 
   const getDescription = () => {
     if (showForgotPassword) {
-      return 'Ange din e-post för återställning.'
+      return 'Ange din e-post – en återställningslänk skickas till dig.'
     } else if (isSignUp) {
       return 'Ange dina uppgifter för att skapa konto.'
     } else {
