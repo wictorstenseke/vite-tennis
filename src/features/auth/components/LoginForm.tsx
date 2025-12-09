@@ -56,20 +56,6 @@ export function LoginForm({ onSuccess, onToggleMode, onToggleForgot }: LoginForm
 
   return (
     <div className="space-y-4">
-      {/* Dynamic description */}
-      {showForgotPassword ? (
-        <div className="text-center text-muted-foreground text-sm mb-2">
-          Fyll i din e-post för att återställa lösenordet.
-        </div>
-      ) : isSignUp ? (
-        <div className="text-center text-muted-foreground text-sm mb-2">
-          Skapa ett nytt konto för att boka bana och delta i stegen.
-        </div>
-      ) : (
-        <div className="text-center text-muted-foreground text-sm mb-2">
-          Logga in med din e-post och lösenord för att boka bana och se stegen.
-        </div>
-      )}
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Email Input */}
         <div>
