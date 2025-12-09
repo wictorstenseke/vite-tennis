@@ -3,7 +3,7 @@ import './App.css'
 
 function App() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 fixed inset-0 overflow-hidden bg-background">
+    <div className="min-h-screen w-full flex flex-col items-center px-4 pt-8 pb-4 fixed inset-0 overflow-hidden bg-background">
       {/* Logo */}
       <div className="mb-8">
         <img 
@@ -14,7 +14,9 @@ function App() {
       </div>
 
       {/* Login Drawer */}
-      <LoginDrawer />
+      <div>
+        <LoginDrawer />
+      </div>
     </div>
   )
 }
