@@ -16,6 +16,7 @@ A tennis club booking and ladder system built with React 19, TypeScript, and Fir
 - **Icons**: Lucide React
 - **Dev Server**: Runs on `0.0.0.0:4490` (see vite.config.ts)
 - **MCP Servers**: shadcn, firebase, and github available (see `.vscode/mcp.json`)
+- **GitHub CLI**: Installed and available for repository management
 
 ## Architecture & File Organization
 
