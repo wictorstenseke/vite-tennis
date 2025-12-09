@@ -22,7 +22,7 @@ describe('authService', () => {
       const mockUser = { uid: '123', email: 'test@example.com' }
       vi.mocked(firebaseAuth.signInWithEmailAndPassword).mockResolvedValue({
         user: mockUser,
-      } as any)
+      } as Awaited<ReturnType<typeof firebaseAuth.signInWithEmailAndPassword>>)
 
       const result = await login('test@example.com', 'password123')
 
@@ -55,7 +55,7 @@ describe('authService', () => {
       const mockUser = { uid: '456', email: 'newuser@example.com' }
       vi.mocked(firebaseAuth.createUserWithEmailAndPassword).mockResolvedValue({
         user: mockUser,
-      } as any)
+      } as Awaited<ReturnType<typeof firebaseAuth.createUserWithEmailAndPassword>>)
 
       const result = await signUp('newuser@example.com', 'password123')
 

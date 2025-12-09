@@ -52,7 +52,6 @@ describe('LoginForm', () => {
     })
 
     it('should display error message when login fails', async () => {
-      const user = userEvent.setup()
       vi.mocked(useAuthModule.useAuth).mockReturnValue({
         user: null,
         loading: false,
