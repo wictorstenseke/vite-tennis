@@ -71,16 +71,15 @@ jobs:
           path: dist/
           retention-days: 7
 
-  # Future: Deploy job (not in scope yet)
-  # deploy:
-  #   name: 🚀 Deploy
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   if: github.ref == 'refs/heads/main'
-  #   steps:
-  #     - name: 📥 Download build artifacts
-  #       uses: actions/download-artifact@v4
-  #       with:
-  #         name: dist
-  #     - name: 🚀 Deploy to hosting
-  #       run: echo "Deploy step here"
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: 📥 Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+      - name: 🚀 Deploy to hosting
+        run: echo "Deploy step here"
