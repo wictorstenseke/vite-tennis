@@ -17,11 +17,11 @@ export function LoginDrawer({ children }: LoginDrawerProps) {
 
   const getDescription = () => {
     if (showForgotPassword) {
-      return 'Fyll i din e-post för att återställa lösenordet.'
+      return 'Ange din e-post för återställning.'
     } else if (isSignUp) {
-      return 'Skapa ett nytt konto för att boka bana och delta i stegen.'
+      return 'Ange dina uppgifter för att skapa konto.'
     } else {
-      return 'Logga in med din e-post och lösenord för att boka bana och se stegen.'
+      return 'Ange dina uppgifter för att logga in.'
     }
   }
 
@@ -61,14 +61,16 @@ export function LoginDrawer({ children }: LoginDrawerProps) {
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         {children || (
-          <Button>
+          <Button variant="outline">
             Logga in
           </Button>
         )}
       </DrawerTrigger>
       <DrawerContent className="max-w-full md:max-w-md mx-auto">
         <DrawerHeader>
-          <DrawerTitle className="text-center">Välkommen</DrawerTitle>
+          <DrawerTitle className="text-center">
+            {isSignUp ? 'Skapa konto' : 'Logga in'}
+          </DrawerTitle>
           <DrawerDescription className="text-center">
             {getDescription()}
           </DrawerDescription>
