@@ -1,4 +1,4 @@
-import { expect, afterEach, vi } from 'vitest'
+import { expect, afterEach, vi, beforeAll, afterAll } from 'vitest'
 import { cleanup } from '@testing-library/react'
 import * as matchers from '@testing-library/jest-dom/matchers'
 
@@ -52,4 +52,13 @@ vi.mock('firebase/auth', () => {
     }),
   }
 })
+
+// Silence console.error during tests
+beforeAll(() => {
+  vi.spyOn(console, 'error').mockImplementation(() => {});
+});
+
+afterAll(() => {
+  (console.error as unknown as { mockRestore?: () => void }).mockRestore?.();
+});
 
