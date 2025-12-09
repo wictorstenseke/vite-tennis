@@ -4,9 +4,11 @@ import { useAuth } from '../hooks/useAuth'
 
 interface LoginFormProps {
   onSuccess?: () => void
+  onToggleMode?: (signUp: boolean) => void
+  onToggleForgot?: (forgot: boolean) => void
 }
 
-export function LoginForm({ onSuccess }: LoginFormProps) {
+export function LoginForm({ onSuccess, onToggleMode, onToggleForgot }: LoginFormProps) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isSignUp, setIsSignUp] = useState(false)
@@ -42,12 +44,14 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
     setIsSignUp(!isSignUp)
     setShowForgotPassword(false)
     setSuccessMessage('')
+    onToggleMode?.(!isSignUp)
   }
 
   const toggleForgotPassword = () => {
     setShowForgotPassword(!showForgotPassword)
     setIsSignUp(false)
     setSuccessMessage('')
+    onToggleForgot?.(!showForgotPassword)
   }
 
   return (

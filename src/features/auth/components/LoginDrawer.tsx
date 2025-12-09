@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Drawer, DrawerContent, DrawerTrigger, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
+import { Drawer, DrawerContent, DrawerTrigger, DrawerHeader, DrawerTitle, DrawerDescription } from '@/components/ui/drawer'
 import { Button } from '@/components/ui/button'
 import { LoginForm } from './LoginForm'
 import { useAuth } from '../hooks/useAuth'
@@ -12,6 +12,18 @@ interface LoginDrawerProps {
 export function LoginDrawer({ children }: LoginDrawerProps) {
   const [open, setOpen] = useState(false)
   const { user } = useAuth()
+  const [isSignUp, setIsSignUp] = useState(false)
+  const [showForgotPassword, setShowForgotPassword] = useState(false)
+
+  const getDescription = () => {
+    if (showForgotPassword) {
+      return 'Fyll i din e-post för att återställa lösenordet.'
+    } else if (isSignUp) {
+      return 'Skapa ett nytt konto för att boka bana och delta i stegen.'
+    } else {
+      return 'Logga in med din e-post och lösenord för att boka bana och se stegen.'
+    }
+  }
 
   const handleLoginSuccess = () => {
     setOpen(false)
@@ -41,6 +53,10 @@ export function LoginDrawer({ children }: LoginDrawerProps) {
     }
   }
 
+  // Pass state setters to LoginForm for sync
+  const handleToggleMode = (signUp: boolean) => setIsSignUp(signUp)
+  const handleToggleForgot = (forgot: boolean) => setShowForgotPassword(forgot)
+
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
@@ -53,9 +69,12 @@ export function LoginDrawer({ children }: LoginDrawerProps) {
       <DrawerContent className="max-w-full md:max-w-md mx-auto">
         <DrawerHeader>
           <DrawerTitle className="text-center">Välkommen</DrawerTitle>
+          <DrawerDescription className="text-center">
+            {getDescription()}
+          </DrawerDescription>
         </DrawerHeader>
         <div className="p-6 pt-0">
-          <LoginForm onSuccess={handleLoginSuccess} />
+          <LoginForm onSuccess={handleLoginSuccess} onToggleMode={handleToggleMode} onToggleForgot={handleToggleForgot} />
         </div>
       </DrawerContent>
     </Drawer>
