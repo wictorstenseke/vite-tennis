@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Drawer, DrawerContent, DrawerTrigger, DrawerHeader, DrawerTitle } from '@/components/ui/drawer'
+import { Drawer, DrawerContent, DrawerTrigger, DrawerHeader, DrawerTitle, DrawerDescription } from '@/components/ui/drawer'
 import { Button } from '@/components/ui/button'
 import { LoginForm } from './LoginForm'
 
@@ -26,6 +26,9 @@ export function LoginDrawer({ children }: LoginDrawerProps) {
       <DrawerContent className="max-w-full md:max-w-md mx-auto">
         <DrawerHeader>
           <DrawerTitle className="text-center">Välkommen</DrawerTitle>
+          <DrawerDescription className="text-center">
+            Logga in med ditt konto för att boka bana och se stegen
+          </DrawerDescription>
         </DrawerHeader>
         <div className="p-6 pt-0">
           <LoginForm onSuccess={handleLoginSuccess} />
